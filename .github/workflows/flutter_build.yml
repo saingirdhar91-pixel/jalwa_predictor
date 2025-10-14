@@ -1,3 +1,4 @@
+
 name: Build Flutter APK
 
 on:
@@ -9,25 +10,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Flutter
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
+          flutter-version: '3.22.0'
 
       - name: Install dependencies
-        run: 
-        cd jalwa_predictor
-         flutter pub get
+        run: |
+          cd jalwa_predictor
+          flutter pub get
 
       - name: Build APK (release)
-        run: flutter build apk --release
+        run: |
+          cd jalwa_predictor
+          flutter build apk --release
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: jp-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: jalwa_predictor/build/app/outputs/flutter-apk/app-release.apk
