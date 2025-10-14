@@ -1,4 +1,3 @@
-
 name: Build Flutter APK
 
 on:
@@ -21,17 +20,13 @@ jobs:
           flutter-version: '3.22.0'
 
       - name: Install dependencies
-        run: |
-          cd jalwa_predictor
-          flutter pub get
+        run: flutter pub get
 
       - name: Build APK (release)
-        run: |
-          cd jalwa_predictor
-          flutter build apk --release
+        run: flutter build apk --release
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: jp-apk
-          path: jalwa_predictor/build/app/outputs/flutter-apk/app-release.apk
+          name: jalwa-predictor-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
