@@ -19,7 +19,9 @@ jobs:
           flutter-version: '3.24.0'
 
       - name: Install dependencies
-        run: flutter pub get
+        run: 
+        cd jalwa_predictor
+         flutter pub get
 
       - name: Build APK (release)
         run: flutter build apk --release
